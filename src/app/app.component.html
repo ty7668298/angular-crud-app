@@ -1,96 +1,46 @@
-<mat-toolbar color="primary">
-  <span>Crud Application</span>
+<mat-toolbar color="primary" style="position: fixed; background-color: #f03f86;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);">
+  <span class="title"><i class="fas fa-robot"></i>AI Character Voice</span>
   <span class="example-spacer"></span>
   <button mat-raised-button (click)="openAddEditEmpForm()">
-    ADD EMPLOYEE
+    Upload New CV
   </button>
 </mat-toolbar>
 
 
 
 <div class="main-body">
-
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
-
-  <div class="table-container">
-    <table mat-table [dataSource]="dataSource" matSort>
-
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-      </ng-container>
-
-      <!-- Progress Column -->
-      <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.firstName}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.lastName}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell *matCellDef="let row"> {{row.email}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="dob">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> dob </th>
-        <td mat-cell *matCellDef="let row"> {{row.dob | date}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> gender </th>
-        <td mat-cell *matCellDef="let row"> {{row.gender}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="education">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Education </th>
-        <td mat-cell *matCellDef="let row"> {{row.education}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="company">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
-        <td mat-cell *matCellDef="let row"> {{row.company}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="experience">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exp. </th>
-        <td mat-cell *matCellDef="let row"> {{row.experience}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="package">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Package </th>
-        <td mat-cell *matCellDef="let row"> {{row.package | currency:'INR'}}L</td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary" (click)="openEditForm(row)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <div class="card-container">
+    <div class="card" *ngFor="let row of dataSource.data">
+      <div class="cv-info">
+        <div class="image-container">
+          <img [src]="row.img" alt="Image Loading...">
+        </div>
+        <div class="details">
+          <h2>{{row.name}}</h2>
+          <p><strong>From:</strong> {{row.from}}</p>
+          <p><strong>Gender:</strong> {{row.gender}}</p>
+          <p><strong>Age:</strong> {{row.age}}</p>
+          <p><strong>Publish Date:</strong> {{row.dob | date}}</p>
+          <p><strong>Description:</strong> {{row.intro}}</p>
+          <audio controls>
+            <source [src]="row.audio" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <a [href]="row.audio" download class="download-button" style="display: block;">Download</a>
+          <!-- <div class="actions">
+            <button mat-icon-button color="primary" (click)="openEditForm(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteEmployee(row.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- <mat-paginator [pageSizeOptions]="[]" [length]="dataSource.paginator?.length"
+(page)="dataSource.paginator ? dataSource.paginator.pageIndex = $event.pageIndex : null">
+</mat-paginator> -->

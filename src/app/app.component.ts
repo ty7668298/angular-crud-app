@@ -14,23 +14,20 @@ import { CoreService } from './core/core.service';
 })
 export class AppComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'email',
-    'dob',
+    'name',
+    'from',
     'gender',
-    'education',
-    'company',
-    'experience',
-    'package',
-    'action',
+    'age',
+    'dob',
+    'intro',
+    'img',
+    'audio'
   ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  
   constructor(
     private _dialog: MatDialog,
     private _empService: EmployeeService,

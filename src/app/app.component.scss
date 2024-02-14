@@ -2,16 +2,94 @@
   flex: 1 1 auto;
 }
 
+span.title{
+  font-size: 24px; /* 根据需要调整字体大小 */
+  color: #fff; /* 设置字体颜色 */
+  animation: pulse 3s infinite alternate; /* 添加动画效果 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-left: 10px;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+
 .main-body {
+  .main-body {
+    position: relative;
+    min-height: 100vh; /* 确保内容不会溢出屏幕 */
+  }
   padding-top: 20px;
   margin: 0 auto;
   max-width: 1348px;
-  mat-form-field {
-    width: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* 调整卡片之间的间距 */
+}
+
+.card {
+  width: calc(50% - 20px); /* 让每个卡片占据屏幕的一半，减去间距 */
+  padding: 20px;
+  border-radius: 10px; /* 添加圆角效果 */
+  background-color: #ffffff; /* 背景颜色 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.mat-paginator {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  align-self: center;
+  width: 100%; 
+}
+
+.cv-info {
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  width: 240px; /* 设置图片容器的宽度 */
+  height: 240px; /* 设置图片容器的高度 */
+  margin-right: 20px; /* 添加间距 */
+}
+
+.image-container img {
+  width: 100%; /* 图片宽度填充容器 */
+  height: 100%; /* 图片高度填充容器 */
+  object-fit: contain
 }
 
 .action {
   display: flex;
   gap: 5px;
+}
+
+.download-button {
+  background-color: #f03f86;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  width: 64px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+.download-button:hover {
+  background-color: #a22a68;
 }

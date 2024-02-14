@@ -1,26 +1,22 @@
 <div mat-dialog-title>
-    <h1>Employee Form</h1>
+    <h1>CV Form</h1>
 </div>
 <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
-    <div mat-dialog-content class="content">
+    <div mat-dialog-content class="content" >
         <div class="row">
-            <mat-form-field appearance="outline">
-                <mat-label>First name</mat-label>
-                <input matInput type="text" placeholder="Ex. Technical" formControlName="firstName">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Ex. Babaji" formControlName="lastName">
+            <mat-form-field appearance="outline" >
+                <mat-label>name</mat-label>
+                <input matInput type="text" placeholder="Ex. Mario" formControlName="name">
             </mat-form-field>
         </div>
 
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email">
+                <mat-label>From</mat-label>
+                <input matInput type="from" placeholder="Ex. video game, cartoon..." formControlName="from">
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Date of birth</mat-label>
+                <mat-label>Publish Date</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="dob">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -39,31 +35,22 @@
 
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Education</mat-label>
-                <mat-select formControlName="education">
-                    <mat-option *ngFor="let val of education" [value]="val">{{val}}
+                <mat-label>Age</mat-label>
+                <mat-select formControlName="age">
+                    <mat-option *ngFor="let val of age" [value]="val">{{val}}
                     </mat-option>
                 </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Company</mat-label>
-                <input matInput placeholder="Ex. Google" formControlName="company">
             </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Experience</mat-label>
-                <input matInput placeholder="Ex. 4" type="number" formControlName="experience">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Package</mat-label>
-                <input matInput placeholder="Ex. 12" type="number" formControlName="package">
-                <mat-hint>In rupees</mat-hint>
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="introduce of this character" formControlName="intro">
             </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions class="action">
         <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+        <button mat-raised-button color="primary" style="background-color: #f03f86;" type="submit">{{data ? 'Update': 'Save'}}</button>
     </div>
 </form>

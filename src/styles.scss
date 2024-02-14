@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://cdn.dribbble.com/users/4152927/screenshots/16243394/media/505a1f5520215150aa0c633d9043f579.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        opacity: 0.6;
+        filter: blur(2px); /* 将背景图片模糊5像素 */
+        z-index: -2; /* 确保 ::before 元素位于其他内容的后面 */
+    }

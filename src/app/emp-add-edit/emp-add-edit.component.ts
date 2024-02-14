@@ -12,12 +12,11 @@ import { EmployeeService } from '../services/employee.service';
 export class EmpAddEditComponent implements OnInit {
   empForm: FormGroup;
 
-  education: string[] = [
-    'Matric',
-    'Diploma',
-    'Intermediate',
-    'Graduate',
-    'Post Graduate',
+  age: string[] = [
+    'Young',
+    'Adult',
+    'Senior',
+    'Robot'
   ];
 
   constructor(
@@ -28,15 +27,12 @@ export class EmpAddEditComponent implements OnInit {
     private _coreService: CoreService
   ) {
     this.empForm = this._fb.group({
-      firstName: '',
-      lastName: '',
-      email: '',
-      dob: '',
+      name: '',
+      from: '',
       gender: '',
-      education: '',
-      company: '',
-      experience: '',
-      package: '',
+      age: '',
+      dob: '',
+      intro: '',
     });
   }
 
@@ -44,7 +40,7 @@ export class EmpAddEditComponent implements OnInit {
     this.empForm.patchValue(this.data);
   }
 
-  onFormSubmit() {
+  onFormSubmit() { 
     if (this.empForm.valid) {
       if (this.data) {
         this._empService
